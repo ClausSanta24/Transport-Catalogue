@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "map_renderer.proto";
+package transport_catalogue_proto;
+
+message Stop {
+    string name = 1;
+    double lat = 2;
+    double lng = 3;
+}
+
+message Bus {
+    string name = 1;
+    repeated uint32 stops = 2;
+    double lenght = 3;
+    double curvature = 4;
+    bool is_round = 5;
+}
+
+message Distance {
+    uint32 start = 1;
+    uint32 end = 2;
+    uint32 distance = 3;
+}
+
+message TransportCatalogue {
+    repeated Stop stops = 1;
+    repeated Bus buses = 2;
+    repeated Distance distances = 3;
+    double Bus_velocity = 4;
+    double Bus_wait_time = 5;
+}
+
+message ProtoStruct {
+    TransportCatalogue catalogue = 1;
+    RenderSettings settings = 2;
+}
